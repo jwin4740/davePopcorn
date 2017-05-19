@@ -6,79 +6,21 @@
 // =============================================================
 
 // Requiring our Todo model
-var db = require("../models");
+
 var path = require("path");
-var sessions = require("express-session");
-
-var moment = require('moment');
-var passhash = require('password-hash-and-salt');
-var security;
-var userArray = [];
-var session;
-
-
-
-var gameObject = {
-  gameCreated: false,
-  gameID: "",
-  gameStarted: false,
-  whitePlayerData: {
-    whitePlayerID: "x",
-    whitePlayerRating: "x"
-  },
-  blackPlayerData: {
-    blackPlayerID: "x",
-    blackPlayerRating: "x"
-  }
-
-};
-
-
-
 
 
 
 // Routes
 // =============================================================
 module.exports = function (app) {
-  // function GameConstruct(startGame, playerOne, playerTwo, whiteMove, blackMove) {
-  //   this.startGame = startGame;
-  //   this.playerOne = playerOne;
-  //   this.playerTwo = playerTwo;
-  //   this.whiteMove = whiteMove;
-  //   this.blackMove = blackMove;
-  // }
 
 
 
-  //  db.gamesetup.destroy({ 
-  //   where: {
-  //     starter: 'active'
-  //   },
-  //   truncate: true 
-  // });
+
+ 
 
 
-  // posts username/email object to the route
-  app.post("/api/users", function (req, res) {
-    db.User.findAll({})
-      .then(function (data) {
-        var n = data.length;
-        console.log(data);
-        for (var i = 0; i < n; i++) {
-          var newUser = new UserConstruct(data[i].dataValues.username, data[i].dataValues.email);
-          userArray.push(newUser);
-
-        }
-        console.log(userArray);
-        res.json(userArray);
-      });
-  });
-
-  app.get("/api/users", function (req, res) {
-    res.json(userArray);
-
-  });
   //REGISTER NEW USER
   app.post("/users", function (req, res, next) {
     //Validation - checks if form is filled out properly
